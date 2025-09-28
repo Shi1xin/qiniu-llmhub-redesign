@@ -9,7 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import qiniuLogo from "@/assets/qiniu-logo.png";
+const qiniuLogoUrl = "https://dn-mars-assets.qbox.me/qiniulogo/img-horizontal-blue-cn.png";
 
 const mockPublishers = [
   "OpenAI", "Anthropic", "Google", "Meta", "Baidu", "Alibaba", "ByteDance", "Tencent"
@@ -59,6 +59,94 @@ const mockModels = [
     description: "Meta 开源的大语言模型，性能强劲且完全免费",
     features: ["工具调用"],
     logo: "🦙"
+  },
+  {
+    id: "claude-3-sonnet",
+    name: "Claude 3 Sonnet",
+    publisher: "Anthropic",
+    inputPrice: 3.0,
+    outputPrice: 15.0,
+    contextLength: "200K",
+    description: "平衡性能与成本的Claude模型，适用于大多数任务",
+    features: ["思维推理", "视觉输入"],
+    logo: "🎭"
+  },
+  {
+    id: "gpt-3.5-turbo",
+    name: "GPT-3.5 Turbo",
+    publisher: "OpenAI",
+    inputPrice: 0.5,
+    outputPrice: 1.5,
+    contextLength: "16K",
+    description: "经济实惠的GPT模型，响应快速，适合简单对话",
+    features: ["工具调用"],
+    logo: "⚡"
+  },
+  {
+    id: "gemini-ultra",
+    name: "Gemini Ultra",
+    publisher: "Google",
+    inputPrice: 5.0,
+    outputPrice: 10.0,
+    contextLength: "128K",
+    description: "Google最强大的多模态模型，在复杂推理任务中表现卓越",
+    features: ["工具调用", "视觉输入", "联网搜索", "思维推理"],
+    logo: "💎"
+  },
+  {
+    id: "qwen-max",
+    name: "通义千问 Max",
+    publisher: "Alibaba",
+    inputPrice: 2.0,
+    outputPrice: 6.0,
+    contextLength: "32K",
+    description: "阿里巴巴大模型，专为中文场景优化，理解力强",
+    features: ["工具调用", "视觉输入"],
+    logo: "🔮"
+  },
+  {
+    id: "baichuan2-13b",
+    name: "百川2-13B",
+    publisher: "Baidu",
+    inputPrice: 1.0,
+    outputPrice: 2.0,
+    contextLength: "8K",
+    description: "百度开发的中文大模型，在中文理解方面表现优异",
+    features: ["工具调用"],
+    logo: "🌊"
+  },
+  {
+    id: "chatglm3-6b",
+    name: "ChatGLM3-6B",
+    publisher: "Tsinghua",
+    inputPrice: 0.0,
+    outputPrice: 0.0,
+    contextLength: "32K",
+    description: "清华开源对话模型，支持中英双语，完全免费",
+    features: ["工具调用"],
+    logo: "🎓"
+  },
+  {
+    id: "doubao-pro",
+    name: "豆包 Pro",
+    publisher: "ByteDance",
+    inputPrice: 1.5,
+    outputPrice: 3.0,
+    contextLength: "64K",
+    description: "字节跳动的对话AI，擅长创意写作和逻辑推理",
+    features: ["工具调用", "思维推理"],
+    logo: "🎪"
+  },
+  {
+    id: "hunyuan-large",
+    name: "混元大模型",
+    publisher: "Tencent",
+    inputPrice: 2.5,
+    outputPrice: 5.0,
+    contextLength: "128K",
+    description: "腾讯混元大模型，多模态能力强，支持长文本理解",
+    features: ["工具调用", "视觉输入", "思维推理"],
+    logo: "🌀"
   }
 ];
 
@@ -96,12 +184,12 @@ const ModelMarketplace = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-glow">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="glass border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <img src={qiniuLogo} alt="七牛云" className="h-8" />
+            <img src={qiniuLogoUrl} alt="七牛云" className="h-8" />
             <span className="text-xl font-semibold bg-gradient-primary bg-clip-text text-transparent">
               AI大模型服务
             </span>
@@ -141,7 +229,7 @@ const ModelMarketplace = () => {
 
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-80 glass-card m-4 p-6 space-y-8 noise">
+        <aside className="w-80 glass-card m-4 p-6 space-y-8 noise rounded-2xl">
           <h2 className="text-lg font-semibold">模型筛选</h2>
           
           {/* Publishers */}
