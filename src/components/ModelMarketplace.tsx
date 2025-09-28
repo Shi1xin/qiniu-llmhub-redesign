@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Search, SlidersHorizontal, Copy, Bell, Book, CreditCard, User, ChevronDown, ChevronUp } from "lucide-react";
+import { Search, SlidersHorizontal, Copy, Bell, Book, CreditCard, User, ChevronDown, ChevronUp, Grid3X3, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -151,6 +152,7 @@ const mockModels = [
 ];
 
 const ModelMarketplace = () => {
+  const { theme, setTheme } = useTheme();
   const [searchTerm, setSearchTerm] = useState("");
   const [showMorePublishers, setShowMorePublishers] = useState(false);
   const [contextLength, setContextLength] = useState([32]);
@@ -184,7 +186,7 @@ const ModelMarketplace = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="glass border-b border-white/10 px-6 py-4">
         <div className="flex items-center justify-between">
@@ -196,14 +198,15 @@ const ModelMarketplace = () => {
           </div>
           
           <nav className="flex items-center space-x-6">
-            <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/10">
+            <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/20">
               <Bell className="h-4 w-4 mr-2" />
               消息
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/10">
-                  产品 <ChevronDown className="h-4 w-4 ml-1" />
+                <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/20">
+                  <Grid3X3 className="h-4 w-4 mr-2" />
+                  产品
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="glass-card">
@@ -212,13 +215,21 @@ const ModelMarketplace = () => {
                 <DropdownMenuItem>AI服务</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/10">
+            <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/20">
               <Book className="h-4 w-4 mr-2" />
               文档
             </Button>
-            <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/10">
+            <Button variant="ghost" size="sm" className="transition-smooth hover:bg-primary/20">
               <CreditCard className="h-4 w-4 mr-2" />
               费用
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="transition-smooth hover:bg-primary/20"
+            >
+              {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </Button>
             <Avatar>
               <AvatarFallback className="bg-gradient-primary text-white">U</AvatarFallback>
