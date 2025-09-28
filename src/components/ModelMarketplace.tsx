@@ -319,9 +319,6 @@ const ModelMarketplace = () => {
             </Sheet>
             
             <img src={qiniuLogoUrl} alt="七牛云" className="h-6 sm:h-8" />
-            <span className="text-lg sm:text-xl font-semibold bg-gradient-primary bg-clip-text text-transparent">
-              AI大模型服务
-            </span>
           </div>
           
           <nav className="flex items-center space-x-2 sm:space-x-6">
